@@ -1,0 +1,27 @@
+# Web GUI & Orchestration Framework
+nicegui>=2.0.0
+fastapi>=0.110.0
+uvicorn>=0.28.0
+pydantic>=2.6.0
+
+# Image Processing, OCR & Computer Vision
+opencv-python>=4.9.0.80
+pillow>=10.2.0
+pytesseract>=0.3.10
+paddleocr>=2.8.0
+simple-lama-inpainting>=0.1.2
+
+# Deep Learning Models (SAM 2, Diffusion backends)
+torch>=2.5.1
+torchvision>=0.20.1
+sam2>=1.0.0
+huggingface-hub>=0.23.0
+
+# Document Import & Conversion
+pdf2image>=1.17.0
+PyPDF2>=3.0.0
+
+# Audio & Video Assembly
+moviepy>=1.0.3
+requests>=2.31.0
+elevenlabs>=1.0.0
