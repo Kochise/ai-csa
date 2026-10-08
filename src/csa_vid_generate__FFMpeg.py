@@ -1,12 +1,28 @@
-"""
+# author: d.koch
+# coding: utf-8
+# naming: pep-0008
+# typing: pep-0484
+# docstring: pep-0257
+# indentation: 4 spaces
+
+""" csa_vid_generate__FFMpeg.py
 Comic Strip Animator - Video Generator (FFmpeg / Fallback Implementation)
-Filename: csa_vid_generate__FFMpeg.py
 """
+
+# - - - IMPORT - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 import subprocess
 import os
+
+# . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
 from typing import Dict, Any, List
+
+# . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
 from csa_vid_generate import CSAVideoGeneratorBase
+
+# - - - CLASS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 class CSAVideoGeneratorFFMpeg(CSAVideoGeneratorBase):
 

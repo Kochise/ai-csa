@@ -1,10 +1,20 @@
-"""
+# author: d.koch
+# coding: utf-8
+# naming: pep-0008
+# typing: pep-0484
+# docstring: pep-0257
+# indentation: 4 spaces
+
+""" csa_vid_generate.py
 Comic Strip Animator - Video Generation Base Interface
-Filename: csa_vid_generate.py
 """
+
+# - - - IMPORT - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 from abc import ABC, abstractmethod
 from typing import Dict, Any, List
+
+# - - - CLASS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 class CSAVideoGeneratorBase(ABC):
 

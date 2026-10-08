@@ -46,11 +46,13 @@ if command -v apt-get &> /dev/null; then
         ffmpeg \
         tesseract-ocr \
         tesseract-ocr-eng \
+        tesseract-ocr-fra \
         poppler-utils \
         git \
         curl \
         wget \
-        libgl1-mesa-glx \
+        libgl1 \
+        libglx-mesa0 \
         libglib2.0-0
 else
     echo -e "${YELLOW}Notice: apt-get not found. Ensuring essential binaries exist...${NC}"
@@ -110,13 +112,24 @@ source venv/bin/activate
 
 echo -e "${BLUE}[4/6] Installing PyTorch with CUDA Support...${NC}"
 
+# HOOK_UV_NETWORK_TWEAKS: Increase timeout and limit concurrency to prevent timeouts & extraction errors
+export UV_HTTP_TIMEOUT=300
+export UV_CONCURRENT_DOWNLOADS=2
+
 # HOOK_PYTORCH_INSTALL: Install PyTorch for AI/ML features (SAM 2, LaMa, Paddle)
-uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+uv pip install torch torchvision \
+    --index-url https://download.pytorch.org/whl/cu121
 
 echo -e "${BLUE}[5/6] Installing Dependencies from requirements.txt...${NC}"
 
 if [ -f "requirements.txt" ]; then
-    uv pip install -r requirements.txt
+    # Ensure overrides.txt exists to patch simple-lama-inpainting's Pillow constraint
+    echo "pillow>=10.2.0" > overrides.txt
+
+    uv pip install -r requirements.txt --override overrides.txt
+
+    # Explicitly install OCR engines (PaddleOCR & EasyOCR)
+    uv pip install paddlepaddle paddleocr easyocr
 else
     echo -e "${RED}Error: requirements.txt not found!${NC}"
 fi

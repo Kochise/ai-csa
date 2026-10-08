@@ -1,0 +1,10 @@
+# https://github.com/github/gitignore
+
+**/_*/
+#**/_OLD/
+#**/__pycache__/
+
+projects/
+venv/
+
+settings.json
